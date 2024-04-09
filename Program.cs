@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 class Node
 {
@@ -246,4 +247,65 @@ class Program
 
     }
 
+}
+
+
+public class Livro
+{
+    public int ID { get; set; }
+    public string Titulo { get; set; }
+    public string Autor { get; set; }
+    public int AnoPublicacao { get; set; }
+
+    public Livro(int id, string titulo, string autor, int anoPublicacao)
+    {
+        ID = id;
+        Titulo = titulo;
+        Autor = autor;
+        AnoPublicacao = anoPublicacao;
+    }
+}
+
+public class NoAVL
+{
+    public Livro Livro { get; set; }
+    public int Altura { get; set; }
+    public NoAVL Esquerda { get; set; }
+    public NoAVL Direita { get; set; }
+
+    public NoAVL(Livro livro)
+    {
+        Livro = livro;
+        Altura = 1;
+    }
+}
+
+public class ArvoreAVL
+{
+    // Métodos para inserir, remover, buscar e balancear a árvore AVL
+    // ...
+
+    private int Altura(NoAVL no)
+    {
+        return no == null ? 0 : no.Altura;
+    }
+
+    private int FatorBalanceamento(NoAVL no)
+    {
+        return no == null ? 0 : Altura(no.Esquerda) - Altura(no.Direita);
+    }
+
+    // Métodos para rotação à esquerda e à direita
+    // ...
+}
+
+class Programa
+{
+    static void Main()
+    {
+        ArvoreAVL biblioteca = new ArvoreAVL();
+        Livro livro1 = new Livro(1, "Dom Casmurro", "Machado de Assis", 1899);
+        // Adicione o livro à árvore AVL
+        // biblioteca.Inserir(livro1);
+    }
 }
